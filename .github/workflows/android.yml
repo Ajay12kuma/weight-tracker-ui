@@ -28,6 +28,9 @@ jobs:
       - name: Build Angular Web App
         run: npm run build
 
+      - name: Add Android Container
+        run: npx cap add android
+
       - name: Sync Web App to Android Container
         run: npx cap sync android
 
