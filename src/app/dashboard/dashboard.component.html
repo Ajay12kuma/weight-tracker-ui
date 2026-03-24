@@ -1,0 +1,76 @@
+<ng-container *ngIf="!hasSettings">
+  <div class="settings-setup card container-md" style="max-width: 800px;">
+    <h2>🎯 Comprehensive Goal Configuration</h2>
+    <p>Please establish your baseline targets. Once confirmed, this locks your tracking session metrics fundamentally.</p>
+    
+    <div class="form-group-row">
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" [(ngModel)]="startDate" class="input-field">
+      </div>
+      <div class="form-group">
+        <label>End Date</label>
+        <input type="date" [(ngModel)]="endDate" class="input-field">
+      </div>
+    </div>
+    
+    <div class="form-group-row" style="margin-top: 15px;">
+      <div class="form-group">
+        <label>Current Weight (kg)</label>
+        <input type="number" step="0.001" [(ngModel)]="currentWeight" placeholder="e.g. 90.700" class="input-field">
+      </div>
+      <div class="form-group">
+        <label>Goal Weight (kg)</label>
+        <input type="number" step="0.001" [(ngModel)]="targetWeight" placeholder="e.g. 75.0" class="input-field">
+      </div>
+    </div>
+
+    <div class="form-group-row" style="margin-top: 15px;">
+        <div class="form-group">
+          <label>Height (cm)</label>
+          <input type="number" [(ngModel)]="height" class="input-field">
+        </div>
+        <div class="form-group">
+          <label>Biological Focus</label>
+          <select [(ngModel)]="gender" class="input-field">
+            <option value="MALE">Male (BMR calc)</option>
+            <option value="FEMALE">Female (BMR calc)</option>
+          </select>
+        </div>
+      </div>
+
+    <br/>
+    <button class="btn" style="width:100%; font-size: 1.1rem; padding: 12px;" (click)="saveSettings()">Start Tracking Session</button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="hasSettings">
+  <div class="dashboard-header">
+    <div class="header-flex">
+      <div>
+        <h2>Overview</h2>
+        <p>Current Phase: <strong>{{ settings.startDate }}</strong> to <strong>{{ settings.endDate }}</strong></p>
+      </div>
+      <div>
+        <button class="btn btn-danger" (click)="resetApp()">Cancel Tracker & Wipe Data</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics-grid" *ngIf="strategyMetrics" style="display: flex; gap: 15px; margin-bottom: 2rem;">
+      <div class="card" style="flex:1; border-left: 5px solid #023047; background: #fff9eb;">
+          <h4 style="margin:0 0 10px 0; color:#023047;">🔥 Daily Calorie Strategy</h4>
+          <p style="margin:5px 0 0 0;"><strong>Active Baseline Weight:</strong> {{ strategyMetrics.workingWeight }} kg</p>
+          <p style="margin:5px 0 0 0;"><strong>Maintenance Required:</strong> {{ strategyMetrics.maintenanceCalories }} kcal</p>
+          <p style="margin:5px 0 0 0;"><strong>Goal Trajectory Deficit:</strong> <span style="color:#d62828; font-weight: bold;">-{{ strategyMetrics.requiredDeficit }}</span> kcal / day</p>
+          <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0;">
+          <p style="margin:0; font-size: 1.1rem;"><strong>🎯 Your Target Intake: <span style="color: #2a9d8f;">{{ strategyMetrics.targetDailyIntake }} kcal</span></strong></p>
+      </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <app-activity-tracker></app-activity-tracker>
+  </div>
+
+  <app-charts></app-charts>
+</ng-container>

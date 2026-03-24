@@ -1,0 +1,32 @@
+<div class="ai-container card">
+  <div class="ai-header">
+    <h3>🤖 Smart Progress Analysis</h3>
+    <button class="ai-btn" (click)="analyzeProgress()" [disabled]="isAnalyzing">
+      {{ isAnalyzing ? '🧠 Analyzing Neural Data...' : '✨ Generate AI Insights' }}
+    </button>
+  </div>
+  <div class="ai-results" *ngIf="aiInsightText">
+    <p>{{ aiInsightText }}</p>
+  </div>
+</div>
+
+<div class="charts-container">
+  <div class="chart-card">
+    <h3>📈 Weekly Progress</h3>
+    <div class="canvas-wrapper">
+        <canvas #weeklyChart></canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <h3>📊 Monthly Score Trend</h3>
+    <div class="canvas-wrapper">
+        <canvas #monthlyChart></canvas>
+    </div>
+  </div>
+  <div class="chart-card ratio-card">
+    <h3>🥧 Global Habit Ratio</h3>
+    <div class="canvas-wrapper-pie">
+        <canvas #ratioChart></canvas>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.weight-container { display: flex; flex-direction: column; gap: 2rem; max-width: 900px; margin: 2rem auto; }
+@media (min-width: 768px) {
+  .weight-container { flex-direction: row; }
+}
+.card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee; }
+.form-card { flex: 1; min-width: 250px; }
+.chart-card { flex: 2; }
+.form-card h3, .chart-card h3 { color: #023047; margin-top: 0; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: #555; }
+.input-field { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Inter'; font-size: 1rem; }
+.save-btn { width: 100%; font-size: 1rem; padding: 12px; }
+.flash-message { color: #2a9d8f; font-weight: 600; text-align: center; margin-top: 1rem; }
+.canvas-wrapper { height: 350px; position: relative; }

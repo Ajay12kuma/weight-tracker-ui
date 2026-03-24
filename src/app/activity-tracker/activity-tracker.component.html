@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="tracker-header">
+    <h3>📅 Daily Tracker <span class="active-date">- {{ date }}</span></h3>
+    <button class="btn btn-outline" (click)="enableModifyMode()">
+      {{ isModifyMode ? 'Cancel Edit Mode (Return to Today)' : '✏️ Modify Past Date' }}
+    </button>
+  </div>
+
+  <div class="date-picker-box" *ngIf="isModifyMode">
+    <label>Select Activity Date:</label>
+    <input type="date" [(ngModel)]="date" (change)="loadActivity()" class="input-date">
+    <small class="hint-text">Your timeline allows dates cleanly between {{ minDate }} and {{ maxDate }}.</small>
+  </div>
+
+  <div class="alert-box" *ngIf="isOutOfRange">
+    🚨 This date is actively outside of your Tracking Configuration timeline or is in the future! The tracker is locked.
+  </div>
+
+  <div class="habits-grid" [class.disabled-grid]="isOutOfRange">
+    <div class="habit-col">
+      <h4>🌱 Positive Habits</h4>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.wakeup" [disabled]="isOutOfRange"> Early Wakeup (+5)</label>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.running" [disabled]="isOutOfRange"> Running (+10)</label>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.pushups" [disabled]="isOutOfRange"> Pushups (+10)</label>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.water" [disabled]="isOutOfRange"> 4L Water (+5)</label>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.protein" [disabled]="isOutOfRange"> Protein Goal (+5)</label>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.steps" [disabled]="isOutOfRange"> 10k Steps (+10)</label>
+      <label class="habit-item"><input type="checkbox" [(ngModel)]="activity.sleep" [disabled]="isOutOfRange"> 7-8h Sleep (+10)</label>
+    </div>
+
+    <div class="habit-col">
+      <h4>🚨 Negative Habits</h4>
+      <label class="habit-item negative"><input type="checkbox" [(ngModel)]="activity.sugar" [disabled]="isOutOfRange"> Refined Sugar (-10)</label>
+      <label class="habit-item negative"><input type="checkbox" [(ngModel)]="activity.tea" [disabled]="isOutOfRange"> Excessive Tea (-5)</label>
+      <label class="habit-item negative"><input type="checkbox" [(ngModel)]="activity.masturbation" [disabled]="isOutOfRange"> PMO (-15)</label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn save-btn" (click)="saveActivity()" [disabled]="isOutOfRange">Save Activity Log</button>
+    <div class="score-display">
+      <strong>Daily Score: </strong> <span [ngClass]="{'good': activity.score > 0, 'bad': activity.score < 0}">{{ activity.score }}</span>
+    </div>
+  </div>
+  
+  <p *ngIf="message" class="flash-message">{{ message }}</p>
+</div>

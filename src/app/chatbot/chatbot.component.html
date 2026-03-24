@@ -1,0 +1,30 @@
+<div class="chatbot-wrapper">
+  <!-- Floating Button -->
+  <button class="chat-fab" (click)="toggleChat()" *ngIf="!isOpen">
+    💬 Coach AI
+  </button>
+
+  <!-- Chat Window -->
+  <div class="chat-panel card" *ngIf="isOpen">
+    <div class="chat-header">
+      <h4>🤖 Smart AI Coach</h4>
+      <button class="close-btn" (click)="toggleChat()">✖</button>
+    </div>
+    
+    <div class="chat-messages" #chatWindow>
+      <div *ngFor="let msg of messages" 
+           [ngClass]="msg.sender === 'user' ? 'msg-user' : 'msg-ai'">
+        <span class="msg-bubble" [innerHTML]="msg.text"></span>
+      </div>
+      
+      <div class="is-typing" *ngIf="isTyping">
+        <i>AI is analyzing your data structure...</i>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Ask about sleep, sugar, score...">
+      <button class="btn" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>

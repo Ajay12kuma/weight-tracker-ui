@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <h2>🏆 Tracker Dashboard</h2>
+  <div class="nav-links">
+    <a routerLink="/dashboard" class="nav-btn">Home</a>
+    <a routerLink="/daily" class="nav-btn">Daily Checklist</a>
+    <a routerLink="/weight" class="nav-btn">⚖️ Weight Center</a>
+    <a routerLink="/charts" class="nav-btn">Weekly / Monthly Trends</a>
+  </div>
+</nav>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<app-chatbot></app-chatbot>

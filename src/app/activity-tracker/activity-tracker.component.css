@@ -1,0 +1,21 @@
+.date-picker-box { margin-bottom: 2rem; padding: 1rem; border: 2px dashed #ccc; border-radius: 8px; background-color: #fff9eb; }
+.hint-text { display: block; color: #666; margin-top: 8px; font-size: 0.9rem; }
+.tracker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.tracker-header h3 { margin: 0; color: #023047; }
+.active-date { color: #219ebc; }
+.btn-outline { background: transparent; color: #219ebc; border: 2px solid #219ebc; cursor: pointer; }
+.btn-outline:hover { background: #219ebc; color: white; }
+.input-date { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Inter'; font-size: 1rem; margin-left: 10px; }
+.alert-box { background-color: #f8dbdb; border: 1px solid #d62828; color: #d62828; padding: 12px; border-radius: 6px; margin-bottom: 1.5rem; font-weight: 500;}
+.disabled-grid { opacity: 0.5; pointer-events: none; }
+.habit-col h4 { margin-top: 0; margin-bottom: 15px; color: #023047; }
+.habit-item { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer; user-select: none; font-size: 1.05rem; }
+.habit-item:last-child { border-bottom: none; }
+.habit-item input { margin-right: 12px; cursor: pointer; transform: scale(1.3); }
+.negative { color: #d62828; }
+.actions { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #eee; padding-top: 1.5rem; }
+.save-btn { font-size: 16px; padding: 12px 24px; }
+.score-display { font-size: 1.25rem; font-weight: bold; background: #e0fbfc; padding: 10px 20px; border-radius: 30px; }
+.good { color: #2a9d8f; }
+.bad { color: #d62828; }
+.flash-message { color: #2a9d8f; font-weight: 600; margin-top: 1rem; }
